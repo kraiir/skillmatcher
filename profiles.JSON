@@ -1,3 +1,47 @@
-data = {
-
+{
+    "profiles": [
+        {
+            "id": 0,
+            "name": "Ton",
+            "age": 7,
+            "skills": {"Math":3, "english":2, "art":5, "code":3},
+            "description": "I enjoy developing the front end of apps and designing character models for games",
+            "seeking": {"Math":3}
+        },
+        {
+            "id": 2,
+            "name": "Jacob",
+            "age": 15,
+            "skills": {"math":4, "english":2, "art":3, "code":4},
+            "description": ""
+        },
+        {
+            "id": 3,
+            "name": "Sean",
+            "age": 17,
+            "skill": {"math":4, "english":2, "art":3, "code":4},
+            "description": ""
+        },
+        {
+            "id": 4,
+            "name": "Jacob",
+            "age": 15,
+            "skill": {"math":5, "english":2, "art":2, "code":4},
+            "description": ""
+        },
+        {
+            "id": 5,
+            "name": "Jacob",
+            "age": 15,
+            "skill": {"math":5, "english":2, "art":2, "code":4},
+            "description": ""
+        },
+        {
+            "id": 6,
+            "name": "Jacob",
+            "age": 15,
+            "skill": {"math":5, "english":2, "art":2, "code":4},
+            "description": ""
+        }
+    ]
 }

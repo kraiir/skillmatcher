@@ -1,49 +1,148 @@
 <!DOCTYPE html>
 <html>
-        <head>
-            <title> 
-                Skillmatcher
-            </title>
-            <!-- css -->
-            <style>
-                img{
-                    width: 200px;
-                    height: auto;
-                }
-                h1{
-                    color: orange
+    <head>
+        <title> 
+            Skillmatcher
+        </title>
+        <style>
+            styles.css
+        </style>
+    </head>
+    <body>
+
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+                
+            <h1>Your name is:</h1>
+            <label for="username">Your name:</label>
+            <input type="text" id="username" name="username"> 
+            <button onclick="getValues();">Submit</button>
+
+            
+
+            <h1>What are your skills level in these subjects?</h1>
+
+            <form id="skills">
+                <label for="math">MATH</label>
+                <input type="range" min="0" max="5" value="0" oninput="math.innerText = this.value"><p id="math">0</p>
+                <output id = "mathSkill"></output>
+
+                <label for="english">ENGLISH</label>
+                <input type="range" min="0" max="5" value="0" oninput="english.innerText = this.value"><p id="english">0</p>
+                <output id = "englishSkill"></output>
+
+                <label for="art">ART</label>
+                <input type="range" min="0" max="5" value="0" oninput="art.innerText = this.value"><p id="art">0</p>
+                <output id = "artSkill"></output>
+                
+                <label for="code">CODE</label>
+                <input type="range" min="0" max="5" value="0" oninput="code.innerText = this.value"><p id="code">0</p>   
+                <output id = "codeSkill"></output>
+                
+                <h2>What skill levels are you looking for in these subjects?</h2>
+            <form id="requirements">
+                <label for="math">MATH</label>
+                <input type="range" min="0" max="5" value="0" oninput="math.innerText = this.value"><p id="math">0</p>
+                <output id = "mathValReq"></output>
+
+                <label for="english">ENGLISH</label>
+                <input type="range" min="0" max="5" value="0" oninput="english.innerText = this.value"><p id="english">0</p>
+                <output id = "englishValReq"></output>
+
+                <label for="art">ART</label>
+                <input type="range" min="0" max="5" value="0" oninput="art.innerText = this.value"><p id="art">0</p>
+                <output id = "artValReq"></output>
+                
+                <label for="code">CODE</label>
+                <input type="range" min="0" max="5" value="0" oninput="code.innerText = this.value"><p id="code">0</p>   
+                <output id = "codeValReq"></output>
+
+
+
+
+                
+                <button onclick="displayProfiles()">display compatible profiles</button>
+            
+            </form>
+        </div>
+            <!-- RIGHTTTTTTTTTTTTTTTTSIDEEEEEEEEEE -->
+            <div class="column" style="background-color:#bbb;">
+                <h1>Your best matches</h1>
+                <p1 = "matches"></p1>
+                <div id="profilesContainer"></div>
+            </div>
+        
+    </div>
+            <!-- adding jss -->
+            <script>
+                var numMatches = 0;
+                var userID = {
+                    "name": "",
+                    "age": 0,
+                    "skills": {"math":0, "english":0, "art":0, "code":0},
+                    "description": ""
+                };
+                console.log(userID.name);
+
+                var people = JSON.parse(profiles.JSON);
+                console.log(people.length);
+                var userID;
+                var value = 0;
+                var matches;
+
+                getValues();
+                findMatches(userID);
+                addMatches();
+
+                /*this adds the matches*/
+
+                for(var i = 0; i < numMatches.length; i++){
+                    addMatch(i);
                 }
                 
-            </style>
-        </head>
-        <body>
-            <h1>Your name is:</h1>
-            <h1>You are good at:</h1>
-            <h1>You need help with:</h1>
-        <!-- adding jss -->
-            
-            <script>
-                // declaring a variable
-                var index = 0;
-                fetch('file.json')
-                    .then(response => profiles.json())
-                    .then(jsonResponse => console.log(jsonResponse))     
-                function checkSkills(){
-                    var quotes = [
-                        // end w comma
-                        `"quote one"`,
-                        `"quote two"`,
-                        `"quote three" `
-                    ];
-                    
-                    var blockquote = document.querySelector("blockquote");
-                    blockquote.innerHTML = quotes[index];
-                    index++;
-                    if (index>=3){
-                        index = 0;
-                    }
-                    
+                function getValues(){
+                    // Get the value from the input box 
+                    const enteredName = document.getElementById('username').value;
+                    // Update the userID object 
+                    userID.name = enteredName;
+                    document.querySelector('h1').innerText = `Your name is: ${enteredName}`;
+                    userID.id = getID();
+
+                function getSkillsSliders(){
+                    /* //cycle thru attributes */
+                    userId.skills[0] = document.getElementById("mathSkill");
+                    userId.skills[1] = document.getElementById("englishSkill");
+                    userId.skills[2] = document.getElementById("artSkill");
+                    userId.skills[3] = document.getElementById("codeSkill");
                 }
+
+                function getSeekingSliders(){
+                    /* //cycle thru attributes */
+                    userId.seeking[2] = document.getElementById("artValReq");
+                    userId.seeking[0] = document.getElementById("mathValReq");
+                    userId.seeking[3] = document.getElementById("codeValReq");
+                    userId.seeking[1] = document.getElementById("englishValReq");
+                }
+
+
+                }
+                function findMatches(userID){
+                    for(var j = 0; j < people.length; j++){
+                        for(var k = 0; k < userID.skills.length; k++){
+                            for(var l = 0; l < people[j].skills.length; l++){
+                                if(people[j].skills[people[j].skills.indexOf(userID.seeking[k])] >= userID.seeking[k] && userID.skills[userID.skills.indexOf(people[3].seeking[l])] >= people[3].seeking[l]){
+                                    matches.push(people[j][0]);
+                                    numMatches++;
+                                }
+                            }
+                        }
+                    }
+                }
+                function addMatches(){
+                    document.getElementById("matches").innerHTML = 5 + 6;
+                }
+
+                displayProfiles(profilesData.profiles);
             </script>
-        </body>
+    </body>
 </html>
