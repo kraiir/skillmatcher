@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+        <head>
+            <title> 
+                Skillmatcher
+            </title>
+            <!-- css -->
+            <style>
+                img{
+                    width: 200px;
+                    height: auto;
+                }
+                h1{
+                    color: orange
+                }
+                
+            </style>
+        </head>
+        <body>
+            <h1>Your name is:</h1>
+            <h1>You are good at:</h1>
+            <h1>You need help with:</h1>
+        <!-- adding jss -->
+            
+            <script>
+                // declaring a variable
+                var index = 0;
+                fetch('file.json')
+                    .then(response => profiles.json())
+                    .then(jsonResponse => console.log(jsonResponse))     
+                function checkSkills(){
+                    var quotes = [
+                        // end w comma
+                        `"quote one"`,
+                        `"quote two"`,
+                        `"quote three" `
+                    ];
+                    
+                    var blockquote = document.querySelector("blockquote");
+                    blockquote.innerHTML = quotes[index];
+                    index++;
+                    if (index>=3){
+                        index = 0;
+                    }
+                    
+                }
+            </script>
+        </body>
+</html>
